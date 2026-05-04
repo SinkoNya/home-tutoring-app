@@ -108,7 +108,11 @@ function renderRegister() {
           </div>
           <div class="form-group">
             <label for="reg-phone">Phone Number</label>
-            <input type="tel" id="reg-phone" class="form-control" placeholder="+1 234 567 890">
+            <input type="tel" id="reg-phone" class="form-control" placeholder="+213 555 123 456">
+          </div>
+          <div class="form-group" id="bio-group" style="display: none;">
+            <label for="reg-bio">Short Bio (Teacher only)</label>
+            <textarea id="reg-bio" class="form-control" rows="3" placeholder="Tell us about your teaching experience..."></textarea>
           </div>
           <div class="form-group">
             <label for="reg-password">Password</label>
@@ -126,7 +130,13 @@ function renderRegister() {
 function selectRole(el) {
   document.querySelectorAll('.role-option').forEach(r => r.classList.remove('active'));
   el.classList.add('active');
-  document.getElementById('reg-role').value = el.dataset.role;
+  const role = el.dataset.role;
+  document.getElementById('reg-role').value = role;
+  
+  const bioGroup = document.getElementById('bio-group');
+  if (bioGroup) {
+    bioGroup.style.display = role === 'teacher' ? 'block' : 'none';
+  }
 }
 
 async function handleLogin(e) {
@@ -160,7 +170,8 @@ async function handleRegister(e) {
       document.getElementById('reg-email').value,
       document.getElementById('reg-password').value,
       document.getElementById('reg-role').value,
-      document.getElementById('reg-phone').value
+      document.getElementById('reg-phone').value,
+      document.getElementById('reg-bio') ? document.getElementById('reg-bio').value : ''
     );
     showToast('Account created successfully!');
     navigate('dashboard');

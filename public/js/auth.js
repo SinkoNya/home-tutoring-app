@@ -35,8 +35,8 @@ const Auth = {
     return data;
   },
 
-  async register(name, email, password, role, phone) {
-    const data = await API.post('/auth/register', { name, email, password, role, phone });
+  async register(name, email, password, role, phone, bio) {
+    const data = await API.post('/auth/register', { name, email, password, role, phone, bio });
     localStorage.setItem('token', data.token);
     localStorage.setItem('user', JSON.stringify(data.user));
     this.user = data.user;

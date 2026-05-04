@@ -10,7 +10,7 @@ const router = express.Router();
 // Register
 router.post('/register', async (req, res) => {
   try {
-    const { name, email, password, role, phone } = req.body;
+    const { name, email, password, role, phone, bio } = req.body;
 
     if (!name || !email || !password || !role) {
       return res.status(400).json({ error: 'Name, email, password, and role are required' });
@@ -38,8 +38,8 @@ router.post('/register', async (req, res) => {
     // If teacher, create teacher profile
     if (role === 'teacher') {
       db.prepare(
-        'INSERT INTO teacher_profiles (user_id) VALUES (?)'
-      ).run(result.lastInsertRowid);
+        'INSERT INTO teacher_profiles (user_id, bio) VALUES (?, ?)'
+      ).run(result.lastInsertRowid, bio || '');
     }
 
     // Generate token
