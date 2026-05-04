@@ -64,7 +64,7 @@ function renderTeacherCard(teacher) {
         </div>
       </div>
       <div class="teacher-card-footer">
-        <span class="teacher-rate">$${teacher.hourly_rate}<span>/hr</span></span>
+        <span class="teacher-rate">${teacher.hourly_rate} DA<span>/hr</span></span>
         <div class="teacher-rating">
           <span>${renderStars(teacher.rating || 0)}</span>
           <span style="color:var(--text-muted)">(${teacher.total_reviews || 0})</span>

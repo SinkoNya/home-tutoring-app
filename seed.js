@@ -12,11 +12,11 @@ async function seed() {
 
   // Teachers
   const teachers = [
-    ['Sarah Johnson','sarah@tutoring.com','+1111111111','Passionate math teacher with 8 years experience.',35,8,'["Mathematics","Algebra","Calculus"]','New York','M.Sc Mathematics'],
-    ['James Wilson','james@tutoring.com','+2222222222','Physics enthusiast and experienced tutor.',40,10,'["Physics","Chemistry","Science"]','Boston','Ph.D Physics'],
-    ['Emily Chen','emily@tutoring.com','+3333333333','Expert English tutor specializing in essay writing.',30,6,'["English","Literature","Writing"]','San Francisco','M.A English'],
-    ['Michael Brown','michael@tutoring.com','+4444444444','CS tutor with industry experience.',45,12,'["Programming","Python","JavaScript"]','Seattle','M.Sc Computer Science'],
-    ['Lisa Park','lisa@tutoring.com','+5555555555','Biology tutor focused on accessibility.',28,5,'["Biology","Chemistry","Science"]','Chicago','M.Sc Biology']
+    ['Amina Benali','amina@tutoring.dz','+213555000111','Passionate math teacher with 8 years experience.',1500,8,'["Mathematics","Algebra","Calculus"]','Algiers','M.Sc Mathematics'],
+    ['Karim Mansouri','karim@tutoring.dz','+213666000222','Physics enthusiast and experienced tutor.',2000,10,'["Physics","Chemistry","Science"]','Oran','Ph.D Physics'],
+    ['Yasmine Kaddour','yasmine@tutoring.dz','+213777000333','Expert English and French tutor specializing in essay writing.',1200,6,'["English","French","Writing"]','Constantine','M.A Languages'],
+    ['Tarek Brahimi','tarek@tutoring.dz','+213555000444','CS tutor with industry experience.',2500,12,'["Programming","Python","JavaScript"]','Annaba','M.Sc Computer Science'],
+    ['Lina Touati','lina@tutoring.dz','+213666000555','Biology tutor focused on accessibility.',1400,5,'["Biology","Science"]','Sétif','M.Sc Biology']
   ];
 
   for (const t of teachers) {
@@ -29,7 +29,7 @@ async function seed() {
   }
 
   // Students
-  const students = [['Alex Student','alex@student.com','+6666666666'],['Maria Garcia','maria@student.com','+7777777777']];
+  const students = [['Amir Student','amir@student.dz','+213555123456'],['Rania Belaid','rania@student.dz','+213666987654']];
   for (const s of students) {
     db.prepare('INSERT OR IGNORE INTO users (name,email,password,role,phone,status) VALUES (?,?,?,?,?,?)').run(s[0],s[1],hash,'student',s[2],'active');
   }
@@ -38,8 +38,8 @@ async function seed() {
   console.log('Database seeded!');
   console.log('Credentials (password: password123):');
   console.log('  Admin:   admin@tutoring.com');
-  console.log('  Teacher: sarah@tutoring.com');
-  console.log('  Student: alex@student.com');
+  console.log('  Teacher: amina@tutoring.dz');
+  console.log('  Student: amir@student.dz');
 }
 
 seed().catch(console.error);

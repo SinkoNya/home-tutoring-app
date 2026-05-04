@@ -130,7 +130,7 @@ async function loadMyBookings(el) {
         <tbody>${data.bookings.map(b => `
           <tr>
             <td>${b.teacher_name}</td><td>${b.subject}</td><td>${b.date}</td>
-            <td>${b.start_time} - ${b.end_time}</td><td>$${b.total_price}</td>
+            <td>${b.start_time} - ${b.end_time}</td><td>${b.total_price} DA</td>
             <td>${renderBadge(b.status)}</td>
             <td>${b.status === 'pending' ? `<button class="btn btn-danger btn-sm" onclick="updateBooking(${b.id},'cancelled')">Cancel</button>` : '—'}</td>
           </tr>
@@ -173,7 +173,7 @@ function openBookingModal(teacherId, teacherName, rate, subjectsStr) {
       <div class="form-group"><label>Start Time</label><input type="time" class="form-control" id="book-start" required></div>
       <div class="form-group"><label>End Time</label><input type="time" class="form-control" id="book-end" required></div>
       <div class="form-group"><label>Notes (optional)</label><textarea class="form-control" id="book-notes" rows="3"></textarea></div>
-      <p style="color:var(--secondary);margin-bottom:16px">Rate: $${rate}/hr</p>
+      <p style="color:var(--secondary);margin-bottom:16px">Rate: ${rate} DA/hr</p>
       <div class="modal-actions">
         <button type="button" class="btn btn-secondary" onclick="closeBookingModal()">Cancel</button>
         <button type="submit" class="btn btn-primary">Confirm Booking</button>
@@ -244,7 +244,7 @@ async function loadTeacherBookings(el) {
       <thead><tr><th>Student</th><th>Subject</th><th>Date</th><th>Time</th><th>Price</th><th>Status</th><th>Actions</th></tr></thead>
       <tbody>${data.bookings.map(b => `<tr>
         <td>${b.student_name}</td><td>${b.subject}</td><td>${b.date}</td>
-        <td>${b.start_time}-${b.end_time}</td><td>$${b.total_price}</td><td>${renderBadge(b.status)}</td>
+        <td>${b.start_time}-${b.end_time}</td><td>${b.total_price} DA</td><td>${renderBadge(b.status)}</td>
         <td>${b.status === 'pending' ? `
           <button class="btn btn-success btn-sm" onclick="updateBooking(${b.id},'confirmed')">Accept</button>
           <button class="btn btn-danger btn-sm" onclick="updateBooking(${b.id},'cancelled')">Decline</button>
@@ -305,7 +305,7 @@ async function loadAdminOverview(el) {
     <div class="stats-grid">
       <div class="card stat-card"><div class="stat-icon purple">⏳</div><div class="stat-info"><h3>${s.pendingTeachers}</h3><p>Pending Teachers</p></div></div>
       <div class="card stat-card"><div class="stat-icon teal">✅</div><div class="stat-info"><h3>${s.completedBookings}</h3><p>Completed</p></div></div>
-      <div class="card stat-card"><div class="stat-icon green">💰</div><div class="stat-info"><h3>$${s.totalRevenue.toFixed(0)}</h3><p>Revenue</p></div></div>
+      <div class="card stat-card"><div class="stat-icon green">💰</div><div class="stat-info"><h3>${s.totalRevenue.toFixed(0)} DA</h3><p>Revenue</p></div></div>
     </div>
     <div class="card"><h3 style="margin-bottom:16px">Recent Users</h3>
       <div class="table-wrapper"><table>
@@ -341,7 +341,7 @@ async function loadAdminTeachers(el) {
         <h3>${t.name}</h3><p style="color:var(--text-muted);margin-bottom:8px">${t.email}</p>
         <p style="margin-bottom:8px">${t.bio || 'No bio provided'}</p>
         <p><strong>Education:</strong> ${t.education || 'N/A'}</p>
-        <p><strong>Rate:</strong> $${t.hourly_rate}/hr</p>
+        <p><strong>Rate:</strong> ${t.hourly_rate} DA/hr</p>
         <p><strong>Experience:</strong> ${t.experience_years} years</p>
         <div style="margin-top:16px;display:flex;gap:8px">
           <button class="btn btn-success btn-sm" onclick="adminTeacherStatus(${t.id},'approved')">Approve</button>
@@ -360,7 +360,7 @@ async function loadAdminBookings(el) {
       <thead><tr><th>Student</th><th>Teacher</th><th>Subject</th><th>Date</th><th>Price</th><th>Status</th></tr></thead>
       <tbody>${data.bookings.map(b => `<tr>
         <td>${b.student_name || 'N/A'}</td><td>${b.teacher_name || 'N/A'}</td><td>${b.subject}</td>
-        <td>${b.date}</td><td>$${b.total_price}</td><td>${renderBadge(b.status)}</td>
+        <td>${b.date}</td><td>${b.total_price} DA</td><td>${renderBadge(b.status)}</td>
       </tr>`).join('')}</tbody>
     </table></div>
   `;
