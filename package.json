@@ -1,0 +1,19 @@
+{
+  "name": "home-tutoring-app",
+  "version": "1.0.0",
+  "description": "A professional home tutoring platform connecting students with qualified tutors",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "seed": "node seed.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "sql.js": "^1.10.2",
+    "jsonwebtoken": "^9.0.2",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1"
+  }
+}
