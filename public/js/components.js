@@ -23,18 +23,55 @@ function renderBadge(status) {
   return `<span class="badge badge-${status}">${status}</span>`;
 }
 
+// ===== Dark Mode =====
+function initTheme() {
+  const saved = localStorage.getItem('tutorhub-theme');
+  if (saved === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+}
+
+function toggleTheme() {
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  if (isDark) {
+    document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('tutorhub-theme', 'light');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    localStorage.setItem('tutorhub-theme', 'dark');
+  }
+  renderNavbar();
+}
+
+function renderThemeToggle() {
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  return `
+    <li>
+      <div class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode" id="theme-toggle">
+        <div class="theme-toggle-knob">${isDark ? '🌙' : '☀️'}</div>
+      </div>
+    </li>
+  `;
+}
+
+// Apply theme immediately on load (before DOM ready)
+initTheme();
+
 function renderNavbar() {
   const nav = document.getElementById('nav-links');
   const user = Auth.getUser();
+  const themeToggle = renderThemeToggle();
   if (!user) {
     nav.innerHTML = `
       <li><a href="#" onclick="navigate('landing')">Home</a></li>
+      ${themeToggle}
       <li><a href="#" onclick="navigate('login')" class="btn btn-secondary btn-sm">Sign In</a></li>
       <li><a href="#" onclick="navigate('register')" class="btn btn-primary btn-sm">Get Started</a></li>
     `;
   } else {
     nav.innerHTML = `
       <li><a href="#" onclick="navigate('dashboard')">Dashboard</a></li>
+      ${themeToggle}
       <li>
         <div class="nav-user">
           <div class="nav-avatar">${getInitials(user.name)}</div>
