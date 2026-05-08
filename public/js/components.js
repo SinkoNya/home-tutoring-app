@@ -54,7 +54,7 @@ function renderTeacherCard(teacher) {
         <div class="teacher-avatar">${getInitials(teacher.name)}</div>
         <div class="teacher-info">
           <h3>${teacher.name}</h3>
-          <p class="location">📍 ${teacher.location || 'Remote'}</p>
+          <p class="location"><i class="ph ph-map-pin"></i> ${teacher.location || 'Remote'}</p>
         </div>
       </div>
       <div class="teacher-card-body">

@@ -15,9 +15,9 @@ function renderStudentDashboard() {
     <div class="dashboard">
       <aside class="sidebar">
         <ul class="sidebar-nav">
-          <li><a href="#" class="active" onclick="switchTab('find-tutors', this)">🔍 Find Tutors</a></li>
-          <li><a href="#" onclick="switchTab('my-bookings', this)">📅 My Bookings</a></li>
-          <li><a href="#" onclick="switchTab('my-profile', this)">👤 My Profile</a></li>
+          <li><a href="#" class="active" onclick="switchTab('find-tutors', this)"><i class="ph ph-magnifying-glass"></i> Find Tutors</a></li>
+          <li><a href="#" onclick="switchTab('my-bookings', this)"><i class="ph ph-calendar"></i> My Bookings</a></li>
+          <li><a href="#" onclick="switchTab('my-profile', this)"><i class="ph ph-user"></i> My Profile</a></li>
         </ul>
       </aside>
       <main class="main-content">
@@ -36,9 +36,9 @@ function renderTeacherDashboard() {
     <div class="dashboard">
       <aside class="sidebar">
         <ul class="sidebar-nav">
-          <li><a href="#" class="active" onclick="switchTab('teacher-overview', this)">📊 Overview</a></li>
-          <li><a href="#" onclick="switchTab('teacher-bookings', this)">📅 Bookings</a></li>
-          <li><a href="#" onclick="switchTab('teacher-profile', this)">👤 My Profile</a></li>
+          <li><a href="#" class="active" onclick="switchTab('teacher-overview', this)"><i class="ph ph-chart-bar"></i> Overview</a></li>
+          <li><a href="#" onclick="switchTab('teacher-bookings', this)"><i class="ph ph-calendar"></i> Bookings</a></li>
+          <li><a href="#" onclick="switchTab('teacher-profile', this)"><i class="ph ph-user"></i> My Profile</a></li>
         </ul>
       </aside>
       <main class="main-content">
@@ -54,10 +54,10 @@ function renderAdminDashboard() {
     <div class="dashboard">
       <aside class="sidebar">
         <ul class="sidebar-nav">
-          <li><a href="#" class="active" onclick="switchTab('admin-overview', this)">📊 Overview</a></li>
-          <li><a href="#" onclick="switchTab('admin-users', this)">👥 Users</a></li>
-          <li><a href="#" onclick="switchTab('admin-teachers', this)">👨‍🏫 Teacher Approvals</a></li>
-          <li><a href="#" onclick="switchTab('admin-bookings', this)">📅 All Bookings</a></li>
+          <li><a href="#" class="active" onclick="switchTab('admin-overview', this)"><i class="ph ph-chart-bar"></i> Overview</a></li>
+          <li><a href="#" onclick="switchTab('admin-users', this)"><i class="ph ph-users"></i> Users</a></li>
+          <li><a href="#" onclick="switchTab('admin-teachers', this)"><i class="ph ph-chalkboard-teacher"></i> Teacher Approvals</a></li>
+          <li><a href="#" onclick="switchTab('admin-bookings', this)"><i class="ph ph-calendar"></i> All Bookings</a></li>
         </ul>
       </aside>
       <main class="main-content">
@@ -95,7 +95,7 @@ async function loadTabContent(tab) {
       default: container.innerHTML = '<p>Page not found</p>';
     }
   } catch (err) {
-    container.innerHTML = `<div class="empty-state"><div class="empty-icon">⚠️</div><h3>Error loading data</h3><p>${err.message}</p></div>`;
+    container.innerHTML = `<div class="empty-state"><div class="empty-icon"><i class="ph ph-warning"></i></div><h3>Error loading data</h3><p>${err.message}</p></div>`;
   }
 }
 
@@ -103,7 +103,7 @@ async function loadTabContent(tab) {
 async function loadFindTutors(el) {
   const data = await API.get('/teachers');
   if (!data.teachers.length) {
-    el.innerHTML = '<div class="empty-state"><div class="empty-icon">📚</div><h3>No tutors available yet</h3><p>Check back soon!</p></div>';
+    el.innerHTML = '<div class="empty-state"><div class="empty-icon"><i class="ph ph-books"></i></div><h3>No tutors available yet</h3><p>Check back soon!</p></div>';
     return;
   }
   el.innerHTML = `
@@ -136,7 +136,7 @@ async function loadMyBookings(el) {
           </tr>
         `).join('')}</tbody>
       </table></div>
-    ` : '<div class="empty-state"><div class="empty-icon">📅</div><h3>No bookings yet</h3><p>Find a tutor and book your first session!</p></div>'}
+    ` : '<div class="empty-state"><div class="empty-icon"><i class="ph ph-calendar"></i></div><h3>No bookings yet</h3><p>Find a tutor and book your first session!</p></div>'}
   `;
 }
 
@@ -220,12 +220,12 @@ async function loadTeacherOverview(el) {
 
   el.innerHTML = `
     <div class="page-header"><h1>Welcome, ${meData.user.name}</h1><p>Your teaching dashboard</p></div>
-    ${profile.status === 'pending' ? '<div class="card" style="border-color:var(--warning);margin-bottom:24px"><p>⏳ Your profile is pending admin approval. You will be able to receive bookings once approved.</p></div>' : ''}
+    ${profile.status === 'pending' ? '<div class="card" style="border-color:var(--warning);margin-bottom:24px"><p><i class="ph ph-hourglass"></i> Your profile is pending admin approval. You will be able to receive bookings once approved.</p></div>' : ''}
     <div class="stats-grid">
-      <div class="card stat-card"><div class="stat-icon purple">⭐</div><div class="stat-info"><h3>${profile.rating || 0}</h3><p>Rating</p></div></div>
-      <div class="card stat-card"><div class="stat-icon teal">👥</div><div class="stat-info"><h3>${profile.total_students || 0}</h3><p>Students</p></div></div>
-      <div class="card stat-card"><div class="stat-icon pink">📋</div><div class="stat-info"><h3>${pending}</h3><p>Pending</p></div></div>
-      <div class="card stat-card"><div class="stat-icon green">✅</div><div class="stat-info"><h3>${completed}</h3><p>Completed</p></div></div>
+      <div class="card stat-card"><div class="stat-icon purple"><i class="ph ph-star"></i></div><div class="stat-info"><h3>${profile.rating || 0}</h3><p>Rating</p></div></div>
+      <div class="card stat-card"><div class="stat-icon teal"><i class="ph ph-users"></i></div><div class="stat-info"><h3>${profile.total_students || 0}</h3><p>Students</p></div></div>
+      <div class="card stat-card"><div class="stat-icon pink"><i class="ph ph-clipboard-text"></i></div><div class="stat-info"><h3>${pending}</h3><p>Pending</p></div></div>
+      <div class="card stat-card"><div class="stat-icon green"><i class="ph ph-check-circle"></i></div><div class="stat-info"><h3>${completed}</h3><p>Completed</p></div></div>
     </div>
     <div class="card"><h3 style="margin-bottom:16px">Recent Bookings</h3>
       ${bookingsData.bookings.length ? `<div class="table-wrapper"><table>
@@ -250,7 +250,7 @@ async function loadTeacherBookings(el) {
           <button class="btn btn-danger btn-sm" onclick="updateBooking(${b.id},'cancelled')">Decline</button>
         ` : b.status === 'confirmed' ? `<button class="btn btn-primary btn-sm" onclick="updateBooking(${b.id},'completed')">Complete</button>` : '—'}</td>
       </tr>`).join('')}</tbody>
-    </table></div>` : '<div class="empty-state"><div class="empty-icon">📅</div><h3>No bookings yet</h3></div>'}
+    </table></div>` : '<div class="empty-state"><div class="empty-icon"><i class="ph ph-calendar"></i></div><h3>No bookings yet</h3></div>'}
   `;
 }
 
@@ -297,15 +297,15 @@ async function loadAdminOverview(el) {
   el.innerHTML = `
     <div class="page-header"><h1>Admin Dashboard</h1><p>Platform overview and management</p></div>
     <div class="stats-grid">
-      <div class="card stat-card"><div class="stat-icon purple">👥</div><div class="stat-info"><h3>${s.totalUsers}</h3><p>Total Users</p></div></div>
-      <div class="card stat-card"><div class="stat-icon teal">🎓</div><div class="stat-info"><h3>${s.totalStudents}</h3><p>Students</p></div></div>
-      <div class="card stat-card"><div class="stat-icon pink">👨‍🏫</div><div class="stat-info"><h3>${s.totalTeachers}</h3><p>Teachers</p></div></div>
-      <div class="card stat-card"><div class="stat-icon green">📅</div><div class="stat-info"><h3>${s.totalBookings}</h3><p>Bookings</p></div></div>
+      <div class="card stat-card"><div class="stat-icon purple"><i class="ph ph-users"></i></div><div class="stat-info"><h3>${s.totalUsers}</h3><p>Total Users</p></div></div>
+      <div class="card stat-card"><div class="stat-icon teal"><i class="ph ph-graduation-cap"></i></div><div class="stat-info"><h3>${s.totalStudents}</h3><p>Students</p></div></div>
+      <div class="card stat-card"><div class="stat-icon pink"><i class="ph ph-chalkboard-teacher"></i></div><div class="stat-info"><h3>${s.totalTeachers}</h3><p>Teachers</p></div></div>
+      <div class="card stat-card"><div class="stat-icon green"><i class="ph ph-calendar"></i></div><div class="stat-info"><h3>${s.totalBookings}</h3><p>Bookings</p></div></div>
     </div>
     <div class="stats-grid">
-      <div class="card stat-card"><div class="stat-icon purple">⏳</div><div class="stat-info"><h3>${s.pendingTeachers}</h3><p>Pending Teachers</p></div></div>
-      <div class="card stat-card"><div class="stat-icon teal">✅</div><div class="stat-info"><h3>${s.completedBookings}</h3><p>Completed</p></div></div>
-      <div class="card stat-card"><div class="stat-icon green">💰</div><div class="stat-info"><h3>${s.totalRevenue.toFixed(0)} DA</h3><p>Revenue</p></div></div>
+      <div class="card stat-card"><div class="stat-icon purple"><i class="ph ph-hourglass"></i></div><div class="stat-info"><h3>${s.pendingTeachers}</h3><p>Pending Teachers</p></div></div>
+      <div class="card stat-card"><div class="stat-icon teal"><i class="ph ph-check-circle"></i></div><div class="stat-info"><h3>${s.completedBookings}</h3><p>Completed</p></div></div>
+      <div class="card stat-card"><div class="stat-icon green"><i class="ph ph-coins"></i></div><div class="stat-info"><h3>${s.totalRevenue.toFixed(0)} DA</h3><p>Revenue</p></div></div>
     </div>
     <div class="card"><h3 style="margin-bottom:16px">Recent Users</h3>
       <div class="table-wrapper"><table>
@@ -348,7 +348,7 @@ async function loadAdminTeachers(el) {
           <button class="btn btn-danger btn-sm" onclick="adminTeacherStatus(${t.id},'rejected')">Reject</button>
         </div>
       </div>
-    `).join('')}</div>` : '<div class="empty-state"><div class="empty-icon">✅</div><h3>No pending applications</h3></div>'}
+    `).join('')}</div>` : '<div class="empty-state"><div class="empty-icon"><i class="ph ph-check-circle"></i></div><h3>No pending applications</h3></div>'}
   `;
 }
 

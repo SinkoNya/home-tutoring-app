@@ -5,7 +5,7 @@ function renderLanding() {
     <section class="hero">
       <div class="container">
         <div class="hero-content">
-          <div class="hero-badge">✨ The #1 Home Tutoring Platform</div>
+          <div class="hero-badge"><i class="ph ph-sparkle"></i> The #1 Home Tutoring Platform</div>
           <h1>Learn From The<br><span class="gradient-text">Best Tutors</span> At Home</h1>
           <p>Connect with verified, expert tutors for personalized one-on-one sessions. Transform your learning experience with TutorHub.</p>
           <div class="hero-buttons">
@@ -29,12 +29,12 @@ function renderLanding() {
           <p>Everything you need for a world-class learning experience</p>
         </div>
         <div class="features-grid">
-          <div class="card feature-card"><div class="feature-icon">🎯</div><h3>Personalized Learning</h3><p>Get one-on-one sessions tailored to your pace and learning style.</p></div>
-          <div class="card feature-card"><div class="feature-icon">✅</div><h3>Verified Tutors</h3><p>Every tutor is vetted and approved by our admin team for quality.</p></div>
-          <div class="card feature-card"><div class="feature-icon">📅</div><h3>Flexible Scheduling</h3><p>Book sessions at times that work best for you and your family.</p></div>
-          <div class="card feature-card"><div class="feature-icon">💰</div><h3>Transparent Pricing</h3><p>See hourly rates upfront with no hidden fees or surprises.</p></div>
-          <div class="card feature-card"><div class="feature-icon">⭐</div><h3>Ratings & Reviews</h3><p>Read honest reviews from students to find your perfect tutor.</p></div>
-          <div class="card feature-card"><div class="feature-icon">🔒</div><h3>Secure Platform</h3><p>Your data and payments are protected with enterprise security.</p></div>
+          <div class="card feature-card"><div class="feature-icon"><i class="ph ph-target"></i></div><h3>Personalized Learning</h3><p>Get one-on-one sessions tailored to your pace and learning style.</p></div>
+          <div class="card feature-card"><div class="feature-icon"><i class="ph ph-check-circle"></i></div><h3>Verified Tutors</h3><p>Every tutor is vetted and approved by our admin team for quality.</p></div>
+          <div class="card feature-card"><div class="feature-icon"><i class="ph ph-calendar"></i></div><h3>Flexible Scheduling</h3><p>Book sessions at times that work best for you and your family.</p></div>
+          <div class="card feature-card"><div class="feature-icon"><i class="ph ph-coins"></i></div><h3>Transparent Pricing</h3><p>See hourly rates upfront with no hidden fees or surprises.</p></div>
+          <div class="card feature-card"><div class="feature-icon"><i class="ph ph-star"></i></div><h3>Ratings & Reviews</h3><p>Read honest reviews from students to find your perfect tutor.</p></div>
+          <div class="card feature-card"><div class="feature-icon"><i class="ph ph-lock"></i></div><h3>Secure Platform</h3><p>Your data and payments are protected with enterprise security.</p></div>
         </div>
       </div>
     </section>
@@ -42,7 +42,7 @@ function renderLanding() {
     <footer class="footer">
       <div class="container">
         <div class="footer-grid">
-          <div class="footer-brand"><h3>🎓 TutorHub</h3><p>Connecting students with expert tutors for personalized home learning experiences.</p></div>
+          <div class="footer-brand"><h3><i class="ph ph-graduation-cap"></i> TutorHub</h3><p>Connecting students with expert tutors for personalized home learning experiences.</p></div>
           <div><h4>Platform</h4><ul><li><a href="#">Find Tutors</a></li><li><a href="#">Become a Tutor</a></li><li><a href="#">Pricing</a></li></ul></div>
           <div><h4>Company</h4><ul><li><a href="#">About Us</a></li><li><a href="#">Careers</a></li><li><a href="#">Blog</a></li></ul></div>
           <div><h4>Support</h4><ul><li><a href="#">Help Center</a></li><li><a href="#">Contact</a></li><li><a href="#">Privacy</a></li></ul></div>
@@ -88,11 +88,11 @@ function renderRegister() {
             <label>I am a...</label>
             <div class="role-selector">
               <div class="role-option active" data-role="student" onclick="selectRole(this)">
-                <div class="role-icon">🎓</div>
+                <div class="role-icon"><i class="ph ph-graduation-cap"></i></div>
                 <div class="role-label">Student</div>
               </div>
               <div class="role-option" data-role="teacher" onclick="selectRole(this)">
-                <div class="role-icon">👨‍🏫</div>
+                <div class="role-icon"><i class="ph ph-chalkboard-teacher"></i></div>
                 <div class="role-label">Teacher</div>
               </div>
             </div>
